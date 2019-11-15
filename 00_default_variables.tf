@@ -16,3 +16,4 @@ variable "name3" {
 
 variable "machine-type" {
 	default = "Standard_BS1"
+}

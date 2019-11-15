@@ -33,3 +33,5 @@ resource "azurerm_virtual_machine" "mongodb" {
 	}
 	provisioner "remote-exec" {
 		inline = ["sudo apt update", "sudo apt install -y jq", "sudo apt install mongodb", "sudo systemctl start mongodb"]
+	}
+}

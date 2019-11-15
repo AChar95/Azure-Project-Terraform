@@ -9,7 +9,7 @@ resource "azurerm_network_interface" "mongodb" {
 		subnet_id = "${azurerm_subnet.internal.id}"
 		private_ip_address_allocation = "Dynamic"
 	}
-	depends_on = [azurerm_network_security_group.main, azurerm_subnet.internal]
+	depends_on = ["${azurerm_network_security_group.main}", "${azurerm_subnet.internal}"]
 
 	tags = {
 		environment = "staging"
@@ -27,7 +27,7 @@ resource "azurerm_network_interface" "mongodb" {
                 subnet_id = "${azurerm_subnet.internal.id}"
                 private_ip_address_allocation = "Dynamic"
         }
-	depends_on = [azurerm_network_security_group.main, azurerm_subnet.internal]
+	depends_on = ["${azurerm_network_security_group.main}", "${azurerm_subnet.internal}"]
 
         tags = {
                 environment = "staging"
@@ -47,7 +47,7 @@ resource "azurerm_network_interface" "angular" {
 		public_ip_address_id = "${azurerm_public_ip.angular.id}"
         }
 
-	depends_on = [azurerm_network_security_group.main, azurerm_subnet.internal, azurerm_public_ip.angular]
+	depends_on = ["${azurerm_network_security_group.main}", "${azurerm_subnet.internal}"]
         tags = {
                 environment = "staging"
         }
@@ -66,7 +66,7 @@ resource "azurerm_network_interface" "Jenkins" {
 		public_ip_address_id = "${azurerm_public_ip.jenkins.id}"
         }
 
-	depends_on = [azurerm_network_security_group.main, azurerm_subnet.internal, azurerm_public_ip.jenkins]
+	depends_on = ["${azurerm_network_security_group.main}", "${azurerm_subnet.internal}"]
 
         tags = {
                 environment = "staging"
